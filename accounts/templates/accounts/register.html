@@ -1,0 +1,18 @@
+{% load static %}
+{% include "notes/layout.html" %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <h2>DevNote</h2>
+    <div class="login">
+        <form class="login-form" action="register" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p><input class="button" type="submit" value="Register"></p>
+        </form>
+    <p><a href="{% url 'login' %}"><u>Back to login</u></a></p>
+    </div>
+</body>

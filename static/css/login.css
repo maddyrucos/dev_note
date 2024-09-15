@@ -1,0 +1,36 @@
+.login {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+a {
+    color: white;
+    text-decorator: underline;
+}
+
+a:hover {
+    color: grey;
+}
+
+.button {
+    background-color: white;
+    color: black;
+    transition: .1s linear;
+    border-radius: 20px;
+    padding: 4px 16px;
+}
+
+h2 {
+    padding: 5% 0 8px 0;
+    margin: auto auto;
+    width: min-content;
+    font-size: 32px;
+}
+
+.login-form {
+    margin: auto auto;
+    width: 192px;
+    border: 1px solid white;
+    padding: 8px 48px;
+}

@@ -1,0 +1,42 @@
+hr {
+    border: 0,5px solid;
+}
+
+body {
+    background-color: #000000;
+    color: white;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+
+.name {
+    box-sizing: border-box;
+    width: min-content;
+    height: auto;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 228px;
+    justify-content: center;
+}
+
+.description {
+    box-sizing: border-box;
+    width: 50%;
+    height: auto;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Golos Text", "Golos Text Placeholder", sans-serif;
+    color: #ffffff;
+    #background-color: red;
+    display: flex;
+    padding: 16px;
+}

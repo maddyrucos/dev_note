@@ -1,0 +1,30 @@
+{% include "notes/layout.html" %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/notes.css' %}" >
+</head>
+
+<div class="notes-zone">
+    {% if user.is_anonymous %}
+        <h2 class="notes-zone-warning">You are not authorized!</h2>
+    {% else %}
+        <div class="notes-info">
+            <p>Notes: {{ notes|length }}</p>
+            <a href="add">Create</a>
+        </div>
+        {% if notes %}
+                {% for note in notes %}
+                    <div class="notes-box">
+                        <div class="text">
+                            <a class="notes-box-title" href="{{ note.id }}">{{ note.title }}</a>
+                            <p>{{ note.description }}</p>
+                        </div>
+
+                    </div>
+                {% endfor %}
+        {% else %}
+            <p>No notes</p>
+        {% endif %}
+    {% endif %}
+</div>

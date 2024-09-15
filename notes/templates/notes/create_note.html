@@ -1,0 +1,12 @@
+{% include "notes/layout.html" %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/notes.css' %}" >
+</head>
+
+<form class="note-form" action="add" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create"></p>
+</form>

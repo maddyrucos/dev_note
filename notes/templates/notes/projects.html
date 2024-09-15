@@ -1,0 +1,23 @@
+{% include "notes/layout.html" %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/projects.css' %}" >
+</head>
+
+<div class="projects-zone">
+    {% if user.is_anonymous %}
+        <h2 class="notes-zone-warning">You are not authorized!</h2>
+    {% else %}
+        {% for project in projects %}
+            <div class="project-box">
+                <img src="{{ project.image }}">
+                <div class="text">
+                    <a class="project-box-title" href="{{ project.id }}">{{ project.title }}</a>
+                    <p>{{ project.description }}</p>
+                    <span class="views">{{ project.date_created }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

@@ -1,0 +1,61 @@
+.projects-zone{
+    box-sizing: border-box;
+    #background-color: #5b5353;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.project-box {
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 16px 32px 16px 32px;
+    margin: 8px;
+    background-color: #0d0d0d;
+    position: relative;
+}
+
+.project-box img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.project-box .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-box-title {
+    margin: 0;
+    color: white;
+    font-size: 24px;
+}
+
+.project-box-title:hover {
+    color: grey;
+}
+
+.project-box p {
+    margin: 0;
+    font-size: 16px;
+    padding: 0px 0px;
+}
+
+.project-box .views {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+}

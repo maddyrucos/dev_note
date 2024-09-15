@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+  <meta name="description" content="Service for developers where they can share their projects">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Madeezy">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" >
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}" >
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <ul class="nav-bar">
+      <li><a class="nav-a" href="/">Home</a></li>
+      <li><a class="nav-a" href="/projects">Projects</a></li>
+      <li><a class="nav-a" href="/notes">Notes</a></li>
+      {% if user.is_authenticated %}
+      <li><a class="nav-a" href="/setting">Settings</a></li>
+      <li><a class="nav-a" href="/logout">Logout</a></li>
+      {% else %}
+      <li><a class="nav-a" href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+    <hr width="64%">
+      {% block content %} {% endblock %}
+</body>
+</html>
