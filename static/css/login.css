@@ -16,9 +16,13 @@ a:hover {
 .button {
     background-color: white;
     color: black;
-    transition: .1s linear;
-    border-radius: 20px;
+    transition: .2s linear;
+    border-radius: 4px;
     padding: 4px 16px;
+}
+
+.button:hover {
+    transform: rotateZ(5deg);
 }
 
 h2 {

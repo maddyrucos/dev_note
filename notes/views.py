@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Project, Note
 
 from .forms import NoteForm
@@ -19,7 +19,8 @@ def projects(request):
 
 def notes(request):
     if not request.user.is_anonymous:
-        notes = Note.objects.filter(owner=request.user)
+        notes_obj = Note.objects.filter(owner=request.user)
+        notes = [NoteForm(instance=note) for note in notes_obj]
         context = {'notes': notes}
         return render(request, template_name='notes/notes.html', context=context)
     else:
@@ -35,9 +36,11 @@ def create_note(request):
                                            title=cd['title'],
                                            description=cd['description'])
             new_note.save()
-            notes = Note.objects.filter(owner=request.user)
-            context = {'notes': notes}
-            return render(request, 'notes/notes.html', context=context)
+            notes_obj = Note.objects.filter(owner=request.user)
+            notes = [NoteForm(instance=note) for note in notes_obj]
+            empty_form = NoteForm()
+            context = {'notes': notes, 'empty': empty_form}
+            return redirect('notes')
     else:
         form=NoteForm()
     return render(request, 'notes/create_note.html', {'form': form})
@@ -59,3 +62,10 @@ def edit_note(request, note_id):
     else:
         form=NoteForm(instance=note)
     return render(request, 'notes/edit_note.html', {'form': form})
+
+
+def delete_note(request, note_id):
+    note = Note.objects.get(owner=request.user, id=note_id)
+    note.delete()
+    return redirect('notes')
+

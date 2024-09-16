@@ -13,18 +13,24 @@
             <p>Notes: {{ notes|length }}</p>
             <a href="add">Create</a>
         </div>
-        {% if notes %}
-                {% for note in notes %}
-                    <div class="notes-box">
-                        <div class="text">
-                            <a class="notes-box-title" href="{{ note.id }}">{{ note.title }}</a>
-                            <p>{{ note.description }}</p>
+        <div class="notes" id="notes">
+            {% if notes %}
+                    {% for note in notes %}
+                        <div class="notes-box">
+                                <a href="{{ note.instance.id }}/delete" class="delete-button" placeholder="Delete">X</a>
+                                <form id="note-form" class="note-form" method="POST" note-id="{{ note.instance.id }}">
+                                    {% csrf_token %}
+                                    {{ note.title }}
+                                    {{ note.description }}
+                                </form>
+                                <span class="date-created">{{ note.instance.date_created }}</span>
                         </div>
+                    {% endfor %}
 
-                    </div>
-                {% endfor %}
-        {% else %}
-            <p>No notes</p>
-        {% endif %}
+            {% else %}
+                <p>No notes</p>
+            {% endif %}
+        </div>
     {% endif %}
+<script src="{% static 'js/note.js' %}"></script>
 </div>

@@ -34,30 +34,88 @@
     justify-content: left;
     display: flex;
     color: white;
+}
 
+.notes {
+    box-sizing: border-box;
+    #background-color: #5b5353;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-content: left;
+    flex-wrap: wrap;
+    float: left;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 0px 0px 0px 0px;
 }
 
 .notes-box {
-    width: 60%;
+    width: min-content;
+    height: 100%;
     box-sizing: border-box;
-    display: flex;
+    display: grid;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 8px 16px 8px 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: left;
+    padding: 0 0;
     margin: 8px;
     background-color: #0d0d0d;
     position: relative;
 }
 
-.notes-box-title {
+
+input {
+    width: 98%;
+    height: min-content
+    display: flex;
     color: white;
-    margin: 0;
+    background-color: #0d0d0d;
     font-size: 18px;
+    font-style: bold
+    padding: 0 0;
+    margin: 2px;
+    border: 0;
 }
 
-.notes-box-title:hover {
+textarea {
+    width: 200px;
+    height: min-content;
+    display: flex;
+    color: white;
+    background-color: #0d0d0d;
+    margin: 2px 0 15px 0;
+    padding: 0;
+    font-size: 14px;
+    border: 2px solid;
+}
+
+input:hover {
     color: grey;
+}
+
+textarea:hover {
+    color: grey;
+}
+
+.delete-button {
+    color: red;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 14px;
+    padding: 3px 3px 3px 3px;
+}
+
+.date-created {
+    color: grey;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
 }
 
 .notes-zone-warning {

@@ -21,11 +21,12 @@ class Project(models.Model):
 
 
 class Note(models.Model):
+    id = models.AutoField(primary_key=True)
     #project = models.ForeignKey(Project, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
-    date_created = models.DateTimeField(auto_created=True, blank=True, null=True, default=None)
+    date_created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
