@@ -1,0 +1,7 @@
+/dev_note.tar
+/.dockerignore
+/Dockerfile
+/docker-compose.yml
+/README.md
+/update.sh
+/venv

@@ -1,0 +1,16 @@
+services:
+
+  dev_note:
+
+    image: dev_note
+
+    network_mode: host
+
+    volumes:
+      - ./db.sqlite3:/var/www/dev_note/db.sqlite3
+      - ./logs:/var/www/dev_note/logs
+      - ./media:/var/www/dev_note/media
+      - ./static:/var/www/dev_note/static
+
+    command: ["python3", "manage.py", "runserver", "8000"]
+
