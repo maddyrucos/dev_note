@@ -6,31 +6,27 @@
 </head>
 
 <div class="notes-zone">
-    {% if user.is_anonymous %}
-        <h2 class="notes-zone-warning">You are not authorized!</h2>
-    {% else %}
-        <div class="notes-info">
-            <p>Notes: {{ notes|length }}</p>
-            <a href="add">Create</a>
-        </div>
-        <div class="notes" id="notes">
-            {% if notes %}
-                    {% for note in notes %}
-                        <div class="notes-box">
-                                <a href="{{ note.instance.id }}/delete" class="delete-button" placeholder="Delete">X</a>
-                                <form id="note-form" class="note-form" method="POST" note-id="{{ note.instance.id }}">
-                                    {% csrf_token %}
-                                    {{ note.title }}
-                                    {{ note.description }}
-                                </form>
-                                <span class="date-created">{{ note.instance.date_created }}</span>
-                        </div>
-                    {% endfor %}
+    <div class="notes-info">
+        <p>Notes: {{ notes|length }}</p>
+        <a href="add">Create</a>
+    </div>
+    <div class="notes" id="notes">
+        {% if notes %}
+                {% for note in notes %}
+                    <div class="notes-box">
+                            <a href="{{ note.instance.id }}/delete" class="delete-button" placeholder="Delete">X</a>
+                            <form id="note-form" class="note-form" method="POST" note-id="{{ note.instance.id }}">
+                                {% csrf_token %}
+                                {{ note.title }}
+                                {{ note.description }}
+                            </form>
+                            <span class="date-created">{{ note.instance.date_created }}</span>
+                    </div>
+                {% endfor %}
 
-            {% else %}
-                <p>No notes</p>
-            {% endif %}
-        </div>
-    {% endif %}
+        {% else %}
+            <p>No notes</p>
+        {% endif %}
+    </div>
 <script src="{% static 'js/note.js' %}"></script>
 </div>

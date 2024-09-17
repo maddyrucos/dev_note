@@ -6,18 +6,14 @@
 </head>
 
 <div class="projects-zone">
-    {% if user.is_anonymous %}
-        <h2 class="notes-zone-warning">You are not authorized!</h2>
-    {% else %}
-        {% for project in projects %}
-            <div class="project-box">
-                <img src="{{ project.image }}">
-                <div class="text">
-                    <a class="project-box-title" href="{{ project.id }}">{{ project.title }}</a>
-                    <p>{{ project.description }}</p>
-                    <span class="views">{{ project.date_created }}</span>
-                </div>
+    {% for project in projects %}
+        <div class="project-box">
+            <img src="{{ project.image }}">
+            <div class="text">
+                <a class="project-box-title" href="{{ project.id }}">{{ project.title }}</a>
+                <p>{{ project.description }}</p>
+                <span class="views">{{ project.date_created }}</span>
             </div>
-        {% endfor %}
-    {% endif %}
+        </div>
+    {% endfor %}
 </div>

@@ -1,7 +1,9 @@
 .notes-zone {
     box-sizing: border-box;
     #background-color: #5b5353;
-    width: 100%;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     flex-direction: column;
     justify-content: center ;
@@ -15,7 +17,7 @@
 
 .notes-info {
     padding: 0 16px;
-    width: 60%;
+    width: 70%;
     #background-color: brown;
     box-sizing: border-box;
     display: flex;
@@ -130,4 +132,24 @@ textarea:hover {
     margin: auto auto;
     width: min-content;
     padding: 8px 48px;
+}
+
+h2 {
+    margin: 0;
+    size: 30px;
+}
+
+.notes-zone a {
+    color: white;
+    text-decoration: underline;
+}
+
+.notes-zone a:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+.notes-box a {
+    color: red;
+    text-decoration: underline;
 }

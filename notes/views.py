@@ -5,7 +5,10 @@ from .forms import NoteForm
 
 
 def index(request):
-    return render(request, 'notes/home.html')
+    note_obj = Note.objects.get(pk=1)
+    note = NoteForm(instance=note_obj)
+    context = {'note': note}
+    return render(request, template_name='notes/home.html', context=context)
 
 
 def projects(request):
@@ -24,7 +27,7 @@ def notes(request):
         context = {'notes': notes}
         return render(request, template_name='notes/notes.html', context=context)
     else:
-        return render(request, template_name='notes/notes.html')
+        return render(request, template_name='notes/not_authorized.html')
 
 
 def create_note(request):
@@ -48,24 +51,32 @@ def create_note(request):
 
 
 def edit_note(request, note_id):
-    note = Note.objects.get(owner=request.user, id=note_id)
-    if request.method == 'POST':
-        form = NoteForm(request.POST, instance=note)
-        if form.is_valid():
-            cd = form.cleaned_data
-            note.title=cd['title']
-            note.description=cd['description']
-            note.save()
-            notes = Note.objects.filter(owner=request.user)
-            context = {'notes': notes}
-            return render(request, 'notes/notes.html', context=context)
-    else:
-        form=NoteForm(instance=note)
-    return render(request, 'notes/edit_note.html', {'form': form})
+    try:
+        note = Note.objects.get(owner=request.user, id=note_id)
+        if request.method == 'POST':
+            form = NoteForm(request.POST, instance=note)
+            if form.is_valid():
+                cd = form.cleaned_data
+                note.title=cd['title']
+                note.description=cd['description']
+                note.save()
+                notes = Note.objects.filter(owner=request.user)
+                context = {'notes': notes}
+                return render(request, 'notes/notes.html', context=context)
+        else:
+            form=NoteForm(instance=note)
+        return render(request, 'notes/edit_note.html', {'form': form})
+    except Exception as e:
+        print(e.args)
+        return redirect('notes')
+
 
 
 def delete_note(request, note_id):
-    note = Note.objects.get(owner=request.user, id=note_id)
-    note.delete()
+    try:
+        note = Note.objects.get(owner=request.user, id=note_id)
+        note.delete()
+    except Exception as e:
+        print(e)
     return redirect('notes')
 

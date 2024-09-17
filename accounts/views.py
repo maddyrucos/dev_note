@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import LoginForm, RegistrationForm
 
 from django.contrib.auth import authenticate, login, logout
@@ -13,7 +13,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return render(request, 'notes/home.html')
+            return redirect('home')
         else:
             return HttpResponse('Invalid login')
 
@@ -24,7 +24,7 @@ def user_login(request):
 
 def logout_user(request):
     logout(request)
-    return render(request, 'notes/home.html')
+    return redirect('home')
 
 
 def register(request):
@@ -36,7 +36,7 @@ def register(request):
             new_user.save()
 
             login(request, new_user)
-            return render(request, 'notes/home.html')
+            return redirect('home')
     else:
         form=RegistrationForm()
     return render(request, 'accounts/register.html', {'form': form})

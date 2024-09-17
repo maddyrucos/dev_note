@@ -1,12 +1,30 @@
 {% include "notes/layout.html" %}
+{% load static %}
 
-<div class="name">
-    DevNote
-</div>
+<head>
+    <link rel="stylesheet" href="{% static 'css/notes.css' %}" >
+</head>
 
-<div class="description">
-Greetings, courageous coder!
-This is your opportunity to shine
-with your impressive developments here at DevNote.<br>
-Show off your extraordinary coding prowess!
+<div class="home">
+    <div class="name">
+        DevNote
+    </div>
+    <div class="description-grid">
+        <div class="description">
+            Greetings, courageous coder!<br>
+            This is your opportunity to shine
+            with your impressive developments here at DevNote.<br>
+            Show off your extraordinary coding prowess!
+        </div>
+        <div class="note">
+            <div class="notes-box">
+                 <form id="note-form" class="note-form" method="POST" note-id="{{ note.instance.id }}">
+                    {% csrf_token %}
+                    {{ note.title }}
+                    {{ note.description }}
+                </form>
+                <span class="date-created">{{ note.instance.date_created }}</span>
+            </div>
+        </div>
+    </div>
 </div>
