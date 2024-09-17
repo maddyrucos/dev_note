@@ -30,14 +30,20 @@ Before you begin, ensure you have the following installed:
    ```
 
 3. Install the 
-   ```pip install -r requirements.txt
+   ```sh
+   pip install -r requirements.txt
    ```
+   
 4. Create database:
-   ```python3 manage.py migrate
+   ```sh
+   python3 manage.py migrate
    ```
+   
 5. Start the development server:
-   ```python3 manage.py runserver:3000
+   ```sh
+   python3 manage.py runserver:3000
    ```
+   
 6. Open your browser and visit `http://localhost:3000` to see the application in action.
 
 ## Usage
