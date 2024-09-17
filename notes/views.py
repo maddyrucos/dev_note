@@ -22,7 +22,7 @@ def projects(request):
 
 def notes(request):
     if not request.user.is_anonymous:
-        notes_obj = Note.objects.filter(owner=request.user)
+        notes_obj = Note.objects.filter(owner=request.user).order_by('-date_created')
         notes = [NoteForm(instance=note) for note in notes_obj]
         context = {'notes': notes}
         return render(request, template_name='notes/notes.html', context=context)

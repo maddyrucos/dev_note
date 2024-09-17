@@ -20,7 +20,7 @@
                                 {{ note.title }}
                                 {{ note.description }}
                             </form>
-                            <span class="date-created">{{ note.instance.date_created }}</span>
+                            <span class="date-created">{{ note.instance.date_created|date:"d-M-Y G:i" }}</span>
                     </div>
                 {% endfor %}
 
