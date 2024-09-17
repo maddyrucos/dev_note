@@ -24,9 +24,9 @@ Before you begin, ensure you have the following installed:
    git clone https://github.com/maddyrucos/dev_note.git
    ```
 
-2. Navigate to the project directory:
+2. Navigate to the project directory and create virtual enviroment:
    ```sh
-   cd dev_note
+   cd dev_note | python3 -m venv venv | . venv/bin/activate
    ```
 
 3. Install the 
